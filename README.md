@@ -24,6 +24,15 @@ and comments the 154-156 lines
 1. Download [LRW dataset](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrw1.html) and [LRS2 dataset](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html)
 2. Download pretrained [MoCo v2 model](https://dl.fbaipublicfiles.com/moco/moco_checkpoints/moco_v2_800ep/moco_v2_800ep_pretrain.pth.tar) and [wav2vec 2.0 model](https://dl.fbaipublicfiles.com/fairseq/wav2vec/wav2vec_vox_new.pt)
 3. Change the directory in `config.py` to "relative directory" relative to the project root directory
+4. Preprocessing the LRW dataset.
+```shell
+cd trainFrontend
+python saveh5.py
+```
+5. Preprocessing the LRS2 dataset.
+```shell
+python saveh5.py
+```
 
 ## How to train
 1. Train the visual front-end on LRW.
