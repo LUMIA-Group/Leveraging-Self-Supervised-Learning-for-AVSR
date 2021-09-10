@@ -1,0 +1,12 @@
+torch >= 1.8
+opencv-python
+tqdm
+scikit-image
+soundfile
+fairseq
+tensorboardX
+pytorch_lightning
+dlib
+h5py
+editdistance
+git+https://github.com/ildoonet/pytorch-gradual-warmup-lr.git
