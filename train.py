@@ -432,7 +432,7 @@ def main():
     if not args["MODAL"] == "AV" and args["TRAIN_LRS2_MODEL_FILE"] is not None:
         stateDict = torch.load(args["TRAIN_LRS2_MODEL_FILE"], map_location="cpu")['state_dict']
         model.load_state_dict(stateDict, strict=False)
-    elif args["TRAINED_AO_FILE"] is not None and args["TRAINED_VO_FILE"] is not None:
+    if args["MODAL"] == "AV" and args["TRAINED_AO_FILE"] is not None and args["TRAINED_VO_FILE"] is not None:
         AOstateDict = torch.load(args["TRAINED_AO_FILE"])['state_dict']
         stateDict = torch.load(args["TRAINED_VO_FILE"])['state_dict']
         for k in list(AOstateDict.keys()):
