@@ -138,7 +138,7 @@ class AVNet(pl.LightningModule):
     def subNetForward(self, inputBatch, maskw2v):
         audioBatch, audMask, videoBatch, vidLen = inputBatch
         if not self.modal == "VO":
-            if self.ft or not self.modal == "AV":
+            if self.ft and self.modal == "AO":
                 audioBatch, audMask = self.wav2vecModel.extract_features(audioBatch, padding_mask=audMask, mask=maskw2v)
             else:
                 with torch.no_grad():
@@ -465,10 +465,10 @@ def main():
 
     lr_monitor = LearningRateMonitor(logging_interval='step')
 
-    if args["W2V_FREEZE_EPOCH"] > 0:
-        callback_list = [checkpoint_callback, lr_monitor, UnfreezeCallback()]
-    else:
+    if args["MODAL"] == "VO":
         callback_list = [checkpoint_callback, lr_monitor]
+    else:
+        callback_list = [checkpoint_callback, lr_monitor, UnfreezeCallback()]
 
     trainer = pl.Trainer(
         gpus=args["GPU_IDS"],
