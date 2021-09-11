@@ -40,7 +40,7 @@ args["MODAL"] = "AV"  # "AO" "VO" "AV"
 args["NOISE_SNR_DB"] = 5  # noise level in dB SNR
 args["NOISE_PROBABILITY"] = 0.25
 
-args["W2V_FREEZE_EPOCH"] = 0 if args["MODAL"] == "VO" else 40
+args["W2V_FREEZE_EPOCH"] = 40
 args["LRS2_WARMUP_PERIOD"] = 80
 
 args["MOCO_FRONTEND_FILE"] = "../pretrain_model/moco_frontend.pt"
