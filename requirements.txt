@@ -6,7 +6,8 @@ soundfile
 fairseq
 tensorboardX
 pytorch_lightning
+cmake
 dlib
 h5py
 editdistance
-git+https://github.com/ildoonet/pytorch-gradual-warmup-lr.git
+git+git://github.com/lehduong/torch-warmup-lr.git
