@@ -94,30 +94,11 @@ class outputConv(nn.Module):
 
 
 class MaskedLayerNorm(nn.Module):
-    def __init__(self, eps=1e-5, momentum=0.1, affine=False, track_running_stats=False):
+    def __init__(self, eps=1e-5):
         super(MaskedLayerNorm, self).__init__()
         self.register_buffer('mask', None, persistent=False)
         self.register_buffer('inputLenBatch', None, persistent=False)
         self.eps = eps
-        self.momentum = momentum
-        self.affine = affine
-        self.track_running_stats = track_running_stats
-
-        if affine:
-            self.weight = nn.Parameter(torch.Tensor(1, ))
-            self.bias = nn.Parameter(torch.Tensor(1, ))
-        else:
-            self.register_parameter('weight', None)
-            self.register_parameter('bias', None)
-
-        if self.track_running_stats:
-            self.register_buffer('running_mean', torch.zeros(1,))
-            self.register_buffer('running_var', torch.ones(1,))
-            self.register_buffer('num_batches_tracked', torch.tensor(0, dtype=torch.long))
-        else:
-            self.register_parameter('running_mean', None)
-            self.register_parameter('running_var', None)
-            self.register_parameter('num_batches_tracked', None)
 
     def SetMaskandLength(self, mask, inputLenBatch):
         self.mask = mask
@@ -134,27 +115,9 @@ class MaskedLayerNorm(nn.Module):
         stdBatch = ((inputBatch - self.expand2shape(meanBatch, inputBatch.shape)) ** 2 * maskBatch).sum((1, 2))
         stdBatch = stdBatch / (self.inputLenBatch * dModel)
 
-        if self.track_running_stats and self.training:
-            if self.num_batches_tracked == 0:
-                self.running_mean = meanBatch.mean()
-                self.running_var = stdBatch.mean()
-            else:
-                self.running_mean = (1 - self.momentum) * self.running_mean + self.momentum * meanBatch.mean()
-                self.running_var = (1 - self.momentum) * self.running_var + self.momentum * stdBatch.mean()
-            self.num_batches_tracked += 1
         # Norm the input
-        if self.track_running_stats and not self.training:
-            normed = (inputBatch - self.expand2shape(self.running_mean, inputBatch.shape)) / \
-                     (torch.sqrt(self.expand2shape(self.running_var + self.eps, inputBatch.shape)))
-        elif self.track_running_stats and self.training:
-            normed = (inputBatch - self.expand2shape(meanBatch.mean(), inputBatch.shape)) / \
-                     (torch.sqrt(self.expand2shape(stdBatch.mean() + self.eps, inputBatch.shape)))
-        else:
-            normed = (inputBatch - self.expand2shape(meanBatch, inputBatch.shape)) / \
-                     (torch.sqrt(self.expand2shape(stdBatch + self.eps, inputBatch.shape)))
-
-        if self.affine:
-            normed = normed * self.weight + self.bias
+        normed = (inputBatch - self.expand2shape(meanBatch, inputBatch.shape)) / \
+                 (torch.sqrt(self.expand2shape(stdBatch + self.eps, inputBatch.shape)))
         return normed
 
 
