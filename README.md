@@ -1,4 +1,4 @@
-# Leveraging Uni-Modal Self-Supervised Learning for Multimodal Audio-visual Speech Recognition
+# Leveraging Unimodal Self-Supervised Learning for Multimodal Audio-Visual Speech Recognition
 Official PyTorch implementation of paper Leveraging Uni-Modal Self Supervised Learning for Multimodal Audio-visual Speech Recognition
 ## How to install environment
 1. Clone the repo into a directory. 
