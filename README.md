@@ -3,7 +3,7 @@ Official PyTorch implementation of paper Leveraging Uni-Modal Self Supervised Le
 ## How to install environment
 1. Clone the repo into a directory. 
 ```shell
-git clone https://github.com/LUMIA-Group/Leveraging-Uni-Modal-Self-Supervised-Learning-for-Multimodal-Audio-visual-Speech-Recognition.git
+git clone https://github.com/LUMIA-Group/Leveraging-Self-Supervised-Learning-for-AVSR.git
 ```
 2. Install all required packages.
 ```shell
