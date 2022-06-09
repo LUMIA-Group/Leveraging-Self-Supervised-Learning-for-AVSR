@@ -1,6 +1,7 @@
 # Leveraging Unimodal Self-Supervised Learning for Multimodal Audio-Visual Speech Recognition
-Official PyTorch implementation of paper Leveraging Uni-Modal Self Supervised Learning for Multimodal Audio-visual Speech Recognition
-## How to install environment
+This is the official PyTorch implementation of paper [Leveraging Unimodal Self-supervised Learning for Multimodal Audio-visual Speech Recognition](https://arxiv.org/abs/2203.07996)
+
+## Install the environment
 1. Clone the repo into a directory. 
 ```shell
 git clone https://github.com/LUMIA-Group/Leveraging-Self-Supervised-Learning-for-AVSR.git
@@ -20,7 +21,8 @@ and comments the 154-156 lines
 #     scheduler["scheduler"], optim.lr_scheduler.ReduceLROnPlateau
 # )
 ```
-## How to prepare dataset
+
+## Preprocess the dataset
 1. Download [LRW dataset](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrw1.html) and [LRS2 dataset](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html)
 2. Download pretrained [MoCo v2 model](https://dl.fbaipublicfiles.com/moco/moco_checkpoints/moco_v2_800ep/moco_v2_800ep_pretrain.pth.tar) and [wav2vec 2.0 model](https://dl.fbaipublicfiles.com/fairseq/wav2vec/wav2vec_vox_new.pt)
 3. Change the directory in `config.py` to "relative directory" relative to the project root directory
@@ -34,7 +36,7 @@ python saveh5.py
 python saveh5.py
 ```
 
-## How to train
+## Training
 1. Train the visual front-end on LRW.
 ```shell
 python trainfrontend.py
@@ -48,7 +50,8 @@ python train.py
 ```shell
 python train.py
 ```
-## How to test
+
+## Evaluation
 1. Choose test configuration and model.
 2. Evaluate the visual word classification performance.
 ```shell
@@ -57,4 +60,16 @@ python evalfrontend.py
 3. Evaluate the AO/VO/AV model.
 ```shell
 python eval.py
+```
+
+## Cite
+If you find this repo useful in your research, please consider citing it in the following format:
+```
+@inproceedings{pan2022leveraging,
+  title={Leveraging Unimodal Self-Supervised Learning for Multimodal Audio-Visual Speech Recognition},
+  author={Pan, Xichen and Chen, Peiyu and Gong, Yichen and Zhou, Helong and Wang, Xinbing and Lin, Zhouhan},
+  booktitle={Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={4491--4503},
+  year={2022}
+}
 ```
