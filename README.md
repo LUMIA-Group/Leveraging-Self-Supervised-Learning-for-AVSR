@@ -2,8 +2,11 @@
 This is the official PyTorch implementation of paper [Leveraging Unimodal Self-supervised Learning for Multimodal Audio-visual Speech Recognition](https://arxiv.org/abs/2203.07996)
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/leveraging-uni-modal-self-supervised-learning-1/audio-visual-speech-recognition-on-lrs2)](https://paperswithcode.com/sota/audio-visual-speech-recognition-on-lrs2?p=leveraging-uni-modal-self-supervised-learning-1)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/leveraging-uni-modal-self-supervised-learning-1/automatic-speech-recognition-on-lrs2)](https://paperswithcode.com/sota/automatic-speech-recognition-on-lrs2?p=leveraging-uni-modal-self-supervised-learning-1)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/leveraging-uni-modal-self-supervised-learning-1/lipreading-on-lrs2)](https://paperswithcode.com/sota/lipreading-on-lrs2?p=leveraging-uni-modal-self-supervised-learning-1)
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/leveraging-uni-modal-self-supervised-learning-1/lipreading-on-lip-reading-in-the-wild)](https://paperswithcode.com/sota/lipreading-on-lip-reading-in-the-wild?p=leveraging-uni-modal-self-supervised-learning-1)
 
 ## Install the environment
